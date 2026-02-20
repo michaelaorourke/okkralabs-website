@@ -4,7 +4,7 @@ export const site = {
     "Product engineering partner combining senior engineers with AI-augmented workflows to design, build, and scale production software.",
   url: "https://okkralabs.com",
   email: "hello@okkralabs.com",
-  calendly: "https://calendly.com/okkralabs/discovery",
+  calendly: "https://calendly.com/morourke-okkralabs",
   github: "https://github.com/michaelaorourke/okkralabs-website",
   nav: [
     { href: "/services", label: "Services" },

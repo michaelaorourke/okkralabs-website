@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CalendlyButton } from "@/components/ui/calendly-button";
 import { Button } from "@/components/ui/button";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -56,7 +57,7 @@ export function ContactForm() {
 
       if (!res.ok) throw new Error("Request failed");
       setStatus("sent");
-      setMessage("Thanks — we received your message. We'll reply within 1–2 business days.");
+      setMessage("Thanks — we received your message. We'll get back to you within 24 hours. Usually much sooner.");
     } catch {
       setStatus("error");
       setMessage("Something went wrong. Please email hello@okkralabs.com instead.");
@@ -106,7 +107,7 @@ export function ContactForm() {
         <div className="hidden md:block" />
       </div>
       <div>
-        <label htmlFor="contact-details" className="block text-sm text-white/70">
+        <label htmlFor="contact-details" className="block text-sm text-white/60">
           Project description
         </label>
         <textarea
@@ -115,7 +116,7 @@ export function ContactForm() {
           required
           rows={6}
           placeholder="What are you building or improving? Timeline? Any constraints?"
-          className="mt-2 w-full rounded-xl2 border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-accent-400/30"
+          className="mt-2 w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition focus:border-accent-400/30 focus:ring-2 focus:ring-accent-400/20"
         />
         {errors.details && (
           <p className="mt-1 text-xs text-red-300/90">{errors.details}</p>
@@ -126,6 +127,13 @@ export function ContactForm() {
         <Button type="submit" disabled={status === "sending"} className="h-11 px-5">
           {status === "sending" ? "Sending…" : "Send message"}
         </Button>
+        <span className="hidden sm:inline text-white/20">|</span>
+        <CalendlyButton
+          text="Schedule a call"
+          variant="text"
+          className="text-sm transition"
+        />
+        <span className="hidden sm:inline text-white/20">|</span>
         <a
           href="mailto:hello@okkralabs.com"
           className="text-sm text-white/60 hover:text-white transition"
@@ -166,7 +174,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm text-white/70">
+      <label htmlFor={id} className="block text-sm text-white/60">
         {label}
       </label>
       <input
@@ -175,7 +183,7 @@ function Field({
         type={type}
         placeholder={placeholder}
         required={required}
-        className="mt-2 w-full rounded-xl2 border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-accent-400/30"
+        className="mt-2 w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition focus:border-accent-400/30 focus:ring-2 focus:ring-accent-400/20"
       />
       {error && (
         <p className="mt-1 text-xs text-red-300/90">{error}</p>

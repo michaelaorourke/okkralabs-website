@@ -8,7 +8,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-xl2 border border-white/10 bg-white/[0.03] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-white/15",
+        "card-glow rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 hover:-translate-y-0.5 hover:border-white/[0.10] hover:bg-white/[0.03]",
         className
       )}
       {...props}
@@ -30,6 +30,6 @@ export function CardDescription({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p className={cn("mt-2 text-sm text-white/70 leading-relaxed", className)} {...props} />
+    <p className={cn("mt-2 text-sm text-white/60 leading-relaxed", className)} {...props} />
   );
 }
